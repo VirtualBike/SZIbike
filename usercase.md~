@@ -370,103 +370,14 @@
 	quidu      	"39C9260C00D7"
 	logical_models 	(list unit_reference_list
 	    (object Class "City"
-		attributes 	(list Attribute_Set
-		    (object Attribute
-			tool       	"Java"
-			name       	"Pattern applied"
-			value      	"True")
-		    (object Attribute
-			tool       	"Java"
-			name       	"Final"
-			value      	FALSE))
 		quid       	"5444982A02A7"
 		superclasses 	(list inheritance_relationship_list
 		    (object Inheritance_Relationship
 			quid       	"54449E9A01B9"
 			supplier   	"Logical View::Station"
-			quidu      	"544498A80172"))
-		operations 	(list Operations
-		    (object Operation "void Initlization"
-			quid       	"544659FC006A"
-			concurrency 	"Sequential"
-			opExportControl 	"Public"
-			uid        	0)
-		    (object Operation "City"
-			attributes 	(list Attribute_Set
-			    (object Attribute
-				tool       	"Java"
-				name       	"Final"
-				value      	FALSE)
-			    (object Attribute
-				tool       	"Java"
-				name       	"Static"
-				value      	FALSE)
-			    (object Attribute
-				tool       	"Java"
-				name       	"Abstract"
-				value      	FALSE)
-			    (object Attribute
-				tool       	"Java"
-				name       	"Native"
-				value      	FALSE)
-			    (object Attribute
-				tool       	"Java"
-				name       	"Synchronized"
-				value      	FALSE))
-			quid       	"54465C6102F9"
-			concurrency 	"Sequential"
-			opExportControl 	"Protected"
-			uid        	0)
-		    (object Operation "getInstance"
-			attributes 	(list Attribute_Set
-			    (object Attribute
-				tool       	"Java"
-				name       	"Final"
-				value      	FALSE)
-			    (object Attribute
-				tool       	"Java"
-				name       	"Static"
-				value      	TRUE)
-			    (object Attribute
-				tool       	"Java"
-				name       	"Abstract"
-				value      	FALSE)
-			    (object Attribute
-				tool       	"Java"
-				name       	"Native"
-				value      	FALSE)
-			    (object Attribute
-				tool       	"Java"
-				name       	"Synchronized"
-				value      	FALSE))
-			quid       	"54465C6103B1"
-			result     	"City"
-			concurrency 	"Sequential"
-			opExportControl 	"Public"
-			uid        	0
-			quidu      	"5444982A02A7"))
-		class_attributes 	(list class_attribute_list
-		    (object ClassAttribute "String id"
-			quid       	"544659B703CE")
-		    (object ClassAttribute "List<Station> slist"
-			quid       	"544659C5004F")
-		    (object ClassAttribute "String name"
-			quid       	"544659E80049")))
+			quidu      	"544498A80172")))
 	    (object Class "Station"
-		quid       	"544498A80172"
-		class_attributes 	(list class_attribute_list
-		    (object ClassAttribute "String id"
-			quid       	"54465A21003A")
-		    (object ClassAttribute "String name"
-			quid       	"54465A26002E")
-		    (object ClassAttribute "String lat"
-			quid       	"54465A2B027F")
-		    (object ClassAttribute "String lon"
-			quid       	"54465A3C0341")
-		    (object ClassAttribute "String borrow_info"
-			quid       	"54465A6C0381")
-		    (object ClassAttribute "String return_info"
-			quid       	"54465AC403A0")))
+		quid       	"544498A80172")
 	    (object Class "NewClass"
 		quid       	"5444B0ED0367")
 	    (object Class "User"
@@ -491,23 +402,6 @@
 				(object Swimlane "" @14
 				    line_color 	3342489
 				    width      	450))))))
-	    (object Class "City_Client"
-		attributes 	(list Attribute_Set
-		    (object Attribute
-			tool       	"Java"
-			name       	"Pattern applied"
-			value      	"True")
-		    (object Attribute
-			tool       	"Java"
-			name       	"Final"
-			value      	FALSE))
-		quid       	"54465C6001EC"
-		used_nodes 	(list uses_relationship_list
-		    (object Uses_Relationship
-			quid       	"54465C61005A"
-			stereotype 	"creates"
-			supplier   	"Logical View::City"
-			quidu      	"5444982A02A7")))
 	    (object Association "$UNNAMED$12"
 		quid       	"54449EA8016E"
 		roles      	(list role_list
@@ -518,35 +412,6 @@
 			is_navigable 	TRUE)
 		    (object Role "$UNNAMED$14"
 			quid       	"54449EA90184"
-			supplier   	"Logical View::City"
-			quidu      	"5444982A02A7")))
-	    (object Association "$UNNAMED$15"
-		quid       	"54465C61029A"
-		roles      	(list role_list
-		    (object Role "uniqueInstance"
-			attributes 	(list Attribute_Set
-			    (object Attribute
-				tool       	"Java"
-				name       	"Final"
-				value      	FALSE)
-			    (object Attribute
-				tool       	"Java"
-				name       	"Transient"
-				value      	FALSE)
-			    (object Attribute
-				tool       	"Java"
-				name       	"Volatile"
-				value      	FALSE))
-			quid       	"54465C61029B"
-			label      	"uniqueInstance"
-			supplier   	"Logical View::City"
-			quidu      	"5444982A02A7"
-			client_cardinality 	(value cardinality "1")
-			exportControl 	"Private"
-			is_navigable 	TRUE
-			static     	TRUE)
-		    (object Role "$UNNAMED$16"
-			quid       	"54465C6102A0"
 			supplier   	"Logical View::City"
 			quidu      	"5444982A02A7")))
 	    (object Class_Category "javax"
@@ -574,55 +439,7 @@
 		origin_x   	0
 		origin_y   	0
 		items      	(list diagram_item_list
-		    (object ClassView "Class" "Logical View::Station" @15
-			ShowCompartmentStereotypes 	TRUE
-			IncludeAttribute 	TRUE
-			IncludeOperation 	TRUE
-			location   	(1168, 496)
-			font       	(object Font
-			    size       	10
-			    face       	"Arial"
-			    bold       	FALSE
-			    italics    	FALSE
-			    underline  	FALSE
-			    strike     	FALSE
-			    color      	0
-			    default_color 	TRUE)
-			label      	(object ItemLabel
-			    Parent_View 	@15
-			    location   	(979, 290)
-			    fill_color 	13434879
-			    nlines     	1
-			    max_width  	378
-			    justify    	0
-			    label      	"Station")
-			icon_style 	"Icon"
-			line_color 	3342489
-			fill_color 	13434879
-			quidu      	"544498A80172"
-			compartment 	(object Compartment
-			    Parent_View 	@15
-			    location   	(979, 351)
-			    font       	(object Font
-				size       	10
-				face       	"Arial"
-				bold       	FALSE
-				italics    	FALSE
-				underline  	FALSE
-				strike     	FALSE
-				color      	0
-				default_color 	TRUE)
-			    icon_style 	"Icon"
-			    fill_color 	16777215
-			    anchor     	2
-			    nlines     	7
-			    max_width  	375
-			    justify    	1)
-			width      	396
-			height     	436
-			annotation 	8
-			autoResize 	TRUE)
-		    (object ClassView "Class" "Logical View::City" @16
+		    (object ClassView "Class" "Logical View::City" @15
 			ShowCompartmentStereotypes 	TRUE
 			IncludeAttribute 	TRUE
 			IncludeOperation 	TRUE
@@ -637,41 +454,52 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@16
-			    location   	(415, 290)
+			    Parent_View 	@15
+			    location   	(527, 444)
 			    fill_color 	13434879
 			    nlines     	1
-			    max_width  	386
+			    max_width  	162
 			    justify    	0
 			    label      	"City")
 			icon_style 	"Icon"
 			line_color 	3342489
 			fill_color 	13434879
 			quidu      	"5444982A02A7"
-			compartment 	(object Compartment
+			height     	128
+			annotation 	8
+			autoResize 	TRUE)
+		    (object ClassView "Class" "Logical View::Station" @16
+			ShowCompartmentStereotypes 	TRUE
+			IncludeAttribute 	TRUE
+			IncludeOperation 	TRUE
+			location   	(1168, 496)
+			font       	(object Font
+			    size       	10
+			    face       	"Arial"
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	0
+			    default_color 	TRUE)
+			label      	(object ItemLabel
 			    Parent_View 	@16
-			    location   	(415, 351)
-			    font       	(object Font
-				size       	10
-				face       	"Arial"
-				bold       	FALSE
-				italics    	FALSE
-				underline  	FALSE
-				strike     	FALSE
-				color      	0
-				default_color 	TRUE)
-			    icon_style 	"Icon"
-			    fill_color 	16777215
-			    anchor     	2
-			    nlines     	7
-			    max_width  	384
-			    justify    	1)
-			width      	404
-			height     	436
+			    location   	(1086, 445)
+			    fill_color 	13434879
+			    nlines     	1
+			    max_width  	164
+			    justify    	0
+			    label      	"Station")
+			icon_style 	"Icon"
+			line_color 	3342489
+			fill_color 	13434879
+			quidu      	"544498A80172"
+			width      	182
+			height     	126
 			annotation 	8
 			autoResize 	TRUE)
 		    (object AssociationViewNew "$UNNAMED$12" @17
-			location   	(889, 496)
+			location   	(887, 496)
 			font       	(object Font
 			    size       	10
 			    face       	"Arial"
@@ -687,28 +515,57 @@
 			roleview_list 	(list RoleViews
 			    (object RoleView "$UNNAMED$13" @18
 				Parent_View 	@17
-				location   	(281, 0)
+				location   	(279, 0)
 				stereotype 	TRUE
 				line_color 	3342489
 				quidu      	"54449EA9017D"
 				client     	@17
-				supplier   	@15
+				supplier   	@16
 				vertices   	(list Points
-				    (889, 496)
-				    (969, 496))
+				    (887, 496)
+				    (1076, 496))
 				line_style 	0)
 			    (object RoleView "$UNNAMED$14" @19
 				Parent_View 	@17
-				location   	(281, 0)
+				location   	(279, 0)
 				stereotype 	TRUE
 				line_color 	3342489
 				quidu      	"54449EA90184"
 				client     	@17
-				supplier   	@16
+				supplier   	@15
 				vertices   	(list Points
-				    (889, 496)
-				    (810, 496))
-				line_style 	0)))))
+				    (887, 496)
+				    (698, 496))
+				line_style 	0)))
+		    (object ClassView "Class" "Logical View::User" @20
+			ShowCompartmentStereotypes 	TRUE
+			IncludeAttribute 	TRUE
+			IncludeOperation 	TRUE
+			location   	(288, 576)
+			font       	(object Font
+			    size       	10
+			    face       	"Arial"
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	0
+			    default_color 	TRUE)
+			label      	(object ItemLabel
+			    Parent_View 	@20
+			    location   	(207, 524)
+			    fill_color 	13434879
+			    nlines     	1
+			    max_width  	162
+			    justify    	0
+			    label      	"User")
+			icon_style 	"Icon"
+			line_color 	3342489
+			fill_color 	13434879
+			quidu      	"5444B1040213"
+			height     	128
+			annotation 	8
+			autoResize 	TRUE)))
 	    (object ClassDiagram "Legend"
 		quid       	"39CD51840059"
 		title      	"Legend"
@@ -718,7 +575,7 @@
 		origin_x   	0
 		origin_y   	0
 		items      	(list diagram_item_list
-		    (object NoteView @20
+		    (object NoteView @21
 			location   	(224, 624)
 			font       	(object Font
 			    size       	10
@@ -733,7 +590,7 @@
 			fill_color 	12632256
 			width      	300
 			height     	132)
-		    (object NoteView @21
+		    (object NoteView @22
 			location   	(704, 624)
 			font       	(object Font
 			    size       	10
@@ -748,7 +605,7 @@
 			fill_color 	8421631
 			width      	300
 			height     	132)
-		    (object NoteView @22
+		    (object NoteView @23
 			location   	(1200, 624)
 			font       	(object Font
 			    size       	10
@@ -763,7 +620,7 @@
 			fill_color 	12615680
 			width      	300
 			height     	132)
-		    (object NoteView @23
+		    (object NoteView @24
 			location   	(1664, 624)
 			font       	(object Font
 			    size       	10
@@ -778,7 +635,7 @@
 			fill_color 	16777215
 			width      	300
 			height     	132)
-		    (object Label @24
+		    (object Label @25
 			location   	(81, 369)
 			font       	(object Font
 			    size       	12
@@ -793,7 +650,7 @@
 			max_width  	1163
 			justify    	1
 			label      	"J2EE: Java 2 Platform, Enterprise Edition - v 1.2.1")
-		    (object Label @25
+		    (object Label @26
 			location   	(96, 608)
 			font       	(object Font
 			    size       	10
@@ -808,7 +665,7 @@
 			max_width  	268
 			justify    	1
 			label      	"Abstract Class")
-		    (object Label @26
+		    (object Label @27
 			location   	(592, 608)
 			font       	(object Font
 			    size       	10
@@ -823,7 +680,7 @@
 			max_width  	225
 			justify    	1
 			label      	"Final Class")
-		    (object Label @27
+		    (object Label @28
 			location   	(1104, 608)
 			font       	(object Font
 			    size       	10
@@ -838,7 +695,7 @@
 			max_width  	206
 			justify    	1
 			label      	"Interface")
-		    (object Label @28
+		    (object Label @29
 			location   	(1552, 608)
 			font       	(object Font
 			    size       	10
@@ -2156,11 +2013,7 @@
 		    (object Attribute
 			tool       	"Java"
 			name       	"EJBXMLFilePath"
-			value      	"")
-		    (object Attribute
-			tool       	"Java"
-			name       	"Pattern applied"
-			value      	"False")))
+			value      	"")))
 	    (object Attribute
 		tool       	"Java"
 		name       	"Default_Servlet__Class"
