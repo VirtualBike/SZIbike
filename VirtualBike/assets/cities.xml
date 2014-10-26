@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+	<province>
+		<name>   江苏省</name>
+			<city>
+				<id>0101</id>
+				<name>      苏州</name>
+				<url>http://218.93.33.59:85/map/szmap/ibikestation.asp</url>
+			</city>
+			<city>
+				<id>0102</id>
+				<name>      镇江</name>
+				<url>http://218.93.33.59:85/map/zjmap/ibikestation.asp</url>	
+			</city>
+			<city>
+				<id>0103</id>
+				<name>      无锡</name>
+				<url>http://www.wuxibike.com/wxmap/ibikestation.asp</url>
+			</city>
+	</province>
+	<province>
+		<name>   安徽省</name>
+			<city>
+				<id>0101</id>
+				<name>      马鞍山市</name>
+				<url>http://218.93.33.59:85/map/szmap/ibikestation.asp</url>
+			</city>
+			<city>
+				<id>0102</id>
+				<name>      宿州市</name>
+				<url>http://218.93.33.59:85/map/zjmap/ibikestation.asp</url>	
+			</city>
+	</province>
+</xml>

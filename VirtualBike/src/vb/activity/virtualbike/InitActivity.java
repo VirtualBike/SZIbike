@@ -1,10 +1,20 @@
 package vb.activity.virtualbike;
 
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import vb.context.virtualbike.BikeContext;
+import vb.data.virtualbike.IDataModule;
+import vb.data.virtualbike.XMLDataModule;
 import vb.model.virtualbike.City;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,9 +29,27 @@ import android.widget.TextView;
 public class InitActivity extends Activity {
 	City city = null;
 	ExpandableListView expandablelistview = null;
+	Map<String, List<String>> res = new HashMap<String, List<String>>();
+
 	private String[] province = new String[] { "   江苏省", "   安徽省" };
 	private String[][] cities = new String[][] {
 			{ "     苏州", "     常州", "     无锡" }, { "     宿州", "     马鞍山" } };
+
+	/*
+	 * function for load cities data created by Luoxiaobo 2014/10/24
+	 */
+	public void ReadData() throws IOException {
+		// stub here
+		IDataModule xmlDataModule = new XMLDataModule();
+		BikeContext xmldatamodulestratege = new BikeContext(xmlDataModule);
+		res = xmldatamodulestratege.ReadXMLData(getResources().getAssets().open("cities.xml"));
+		
+		/*
+		Map<String, List<String>> stub = new HashMap<String, List<String>>();
+		stub.put("江苏省", Arrays.asList(" 苏州市", "无锡市", "镇江市"));
+		stub.put("安徽省", Arrays.asList(" 宿州市", "马鞍山市"));
+		return stub;*/
+	}
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +57,12 @@ public class InitActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		city = City.getInstance();
 		setContentView(R.layout.activity_init);
+		try {
+			ReadData();
+		} catch (IOException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
 		final ExpandableListAdapter adapter = new BaseExpandableListAdapter() {
 			public TextView gettextview() {
 				AbsListView.LayoutParams lp = new AbsListView.LayoutParams(
@@ -45,7 +79,9 @@ public class InitActivity extends Activity {
 			@Override
 			public Object getChild(int arg0, int arg1) {
 				// TODO 自动生成的方法存根
-				return cities[arg0][arg1];
+
+				return ((List<String>) res.values().toArray()[arg0]).get(arg1);
+				// return cities[arg0][arg1];
 			}
 
 			@Override
@@ -69,19 +105,22 @@ public class InitActivity extends Activity {
 			@Override
 			public int getChildrenCount(int arg0) {
 				// TODO 自动生成的方法存根
-				return cities[arg0].length;
+				return ((List<String>) res.values().toArray()[arg0]).size();
+				// return cities[arg0].length;
 			}
 
 			@Override
 			public Object getGroup(int arg0) {
 				// TODO 自动生成的方法存根
-				return province[arg0];
+				return ((String) res.keySet().toArray()[arg0]);
+				// return province[arg0];
 			}
 
 			@Override
 			public int getGroupCount() {
 				// TODO 自动生成的方法存根
-				return province.length;
+				return (res.keySet().size());
+				// return province.length;
 			}
 
 			@Override
@@ -127,9 +166,14 @@ public class InitActivity extends Activity {
 				// TODO 自动生成的方法存根
 				// stub here for city id
 				String id = "0101";
-				city.Initlization(id);
+				
+				//city.Initlization(id,id);		
 				Intent intent = new Intent();
-				intent.setClass(InitActivity.this,MapActivity.class);
+				Bundle bundle = new Bundle();
+				bundle.putString("id", id);
+				bundle.putString("url", id);
+				intent.putExtras(bundle);
+				intent.setClass(InitActivity.this, MapActivity.class);
 				startActivity(intent);
 				finish();
 				return false;
