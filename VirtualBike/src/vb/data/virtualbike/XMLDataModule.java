@@ -43,8 +43,8 @@ public class XMLDataModule implements IDataModule {
 	public Map<String, List<String>> ReadData(InputStream is) {
 		// TODO 自动生成的方法存根
 		Map<String, List<String>> res = new HashMap<String, List<String>>();
-		String province=null;
-		List<String> cities=null;
+		String province= null;
+		List<String> cities= null;
 		XmlPullParser parser = Xml.newPullParser();
 		try {
 			parser.setInput(is, "UTF-8");
@@ -61,12 +61,13 @@ public class XMLDataModule implements IDataModule {
 				Log.v("tag", parser.getName() + "=" + province);
 					while (parser.nextTag() != XmlPullParser.END_TAG&&!"province".equals(parser.getName())) {
 						parser.require(XmlPullParser.START_TAG, null, "city");
+						String cityinfoString="";
 						for (int i = 0; i < 3; i++) {
 							parser.nextTag();
-							String cityinfoString = parser.getName() + "=" + parser.nextText();
-							cities.add(cityinfoString);
+							cityinfoString = cityinfoString + parser.getName() + "=" + parser.nextText();
 							Log.v("tag",cityinfoString);
 						}
+						cities.add(cityinfoString);
 						parser.nextTag();
 					}
 					res.put(province, cities);

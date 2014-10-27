@@ -24,7 +24,6 @@ public class BikeContext {
 	}
 	public BikeContext(){
 		_city = City.getInstance(); 
-		
 	}
 	/*
 	 * function for read city xml*/

@@ -80,7 +80,7 @@ public class InitActivity extends Activity {
 			public Object getChild(int arg0, int arg1) {
 				// TODO 自动生成的方法存根
 
-				return ((List<String>) res.values().toArray()[arg0]).get(arg1);
+				return ((List<String>) res.values().toArray()[arg0]).get(arg1).split("name=")[1].split("url=")[0];
 				// return cities[arg0][arg1];
 			}
 
@@ -165,17 +165,19 @@ public class InitActivity extends Activity {
 					int arg2, int arg3, long arg4) {
 				// TODO 自动生成的方法存根
 				// stub here for city id
-				String id = "0101";
-				
-				//city.Initlization(id,id);		
+				String id = ((List<String>) res.values().toArray()[arg2]).get(arg3).split("id=")[1].split("name=")[0];
+				String url = ((List<String>) res.values().toArray()[arg2]).get(arg3).split("url=")[1];
+				String name = ((List<String>) res.values().toArray()[arg2]).get(arg3).split("name=")[1].split("url=")[0].trim();
+ 				//city.Initlization(id,id);		
 				Intent intent = new Intent();
 				Bundle bundle = new Bundle();
 				bundle.putString("id", id);
-				bundle.putString("url", id);
+				bundle.putString("url", url);
+				bundle.putString("name", name);
 				intent.putExtras(bundle);
 				intent.setClass(InitActivity.this, MapActivity.class);
 				startActivity(intent);
-				finish();
+				//finish();
 				return false;
 			}
 		});

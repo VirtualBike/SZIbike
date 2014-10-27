@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import org.apache.http.client.ClientProtocolException;
 import org.json.JSONException;
 
+import android.util.Log;
+
 import vb.helpers.virtualbike.HttpRequestHelper;
 import vb.helpers.virtualbike.JsonParserHelper;
 
@@ -65,8 +67,8 @@ public class City {
 				try {
 					String dataString =null ;
 					JsonParserHelper jsonph = new JsonParserHelper();
-					dataString = hr.execute().split("{")[1];
-					
+					dataString = hr.execute().split("=")[1];
+					Log.v("jsonstring",dataString);
 					dnotwrite2db = dataString.contains("availBike");
 					if (dnotwrite2db) {
 						_slist = jsonph.parser2list_with_validbike(dataString);

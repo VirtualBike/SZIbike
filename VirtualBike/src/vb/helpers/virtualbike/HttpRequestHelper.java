@@ -13,16 +13,19 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.impl.client.DefaultHttpClient;
 
+import android.util.Log;
+
 public class HttpRequestHelper {
 	private HttpClient client = new DefaultHttpClient();
 	private HttpUriRequest requestasp = null;
 
 	public HttpRequestHelper(String url) {
 		requestasp = new HttpPost(url);
+		Log.v("url",url);
 	};
 
 	public String execute() throws ClientProtocolException, IOException {
-
+		Log.v("url",requestasp.toString());
 		HttpResponse response = client.execute(requestasp);
 		String str = null;
 		if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
