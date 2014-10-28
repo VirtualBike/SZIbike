@@ -6,5 +6,6 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="gen"/>
 	<classpathentry exported="true" kind="lib" path="E:/高软/SZibike/SZIbike/VirtualBike/libs/baidumapapi_v3_1_1.jar"/>
+	<classpathentry kind="lib" path="E:/高软/SZibike/SZIbike/VirtualBike/libs/locSDK_4.2.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>

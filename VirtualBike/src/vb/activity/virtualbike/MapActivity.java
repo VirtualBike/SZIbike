@@ -97,11 +97,11 @@ OnGetGeoCoderResultListener{
 		mSearch.geocode(new GeoCodeOption().city(cityname).address(cityname));
 		_city = City.getInstance();
 		IDataModule datamodulestratege = new DBDataModule();
-		BikeContext context = new BikeContext(datamodulestratege);
-		_existcity = context.CheckExist(cityid);
+		_bikecontext = new BikeContext(datamodulestratege);
+		_existcity = _bikecontext.CheckExist(cityid);
 		if (_existcity) {
 			// ture stands for exits city ever load ,and load derectly from db
-			_city.setSlist(context.ReadDBData());
+			_city.setSlist(_bikecontext.ReadDBData());
 		}
 		else {
 			Initlization();
@@ -119,7 +119,6 @@ OnGetGeoCoderResultListener{
 		@Override
 		public void onReceiveLocation(BDLocation location) {
 			// map view 销毁后不在处理新接收的位置
-			Log.v("location",location.toString());
 			if (location == null || mMapView == null)
 				return;
 			MyLocationData locData = new MyLocationData.Builder()
@@ -135,8 +134,13 @@ OnGetGeoCoderResultListener{
 				MapStatusUpdate u = MapStatusUpdateFactory.newLatLng(ll);
 				mBaiduMap.animateMapStatus(u);
 			}
-			Log.v("location",locData.toString());
-		}
+			Log.v("location",locData.latitude+","+locData.longitude);
+			/*
+			 * Need Thinking 每时每刻接收数据即查询？不可取；
+			 * 多线程查询？
+			 * */
+			_bikecontext.SearchStation(new LatLng(location.getLatitude(), location.getLongitude()), 5);
+		};
 
 		public void onReceivePoi(BDLocation poiLocation) {
 		}

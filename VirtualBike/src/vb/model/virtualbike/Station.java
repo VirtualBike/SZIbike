@@ -10,10 +10,21 @@ public class Station {
 	private String lon;
 	private String borrow_info;
 	private String return_info;
-	
+	private Double distence_info;
+	public Object locobjObject;
 	
 	public Station () {
 		
+	}
+
+
+	public Double getDistence_info() {
+		return distence_info;
+	}
+
+
+	public void setDistence_info(Double distence_info) {
+		this.distence_info = distence_info;
 	}
 
 
