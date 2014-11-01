@@ -1,9 +1,13 @@
 package vb.activity.virtualbike;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import vb.context.virtualbike.BikeContext;
 import vb.data.virtualbike.DBDataModule;
 import vb.data.virtualbike.IDataModule;
 import vb.model.virtualbike.City;
+import android.R.bool;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -21,12 +25,16 @@ import com.baidu.location.LocationClientOption;
 import com.baidu.mapapi.SDKInitializer;
 import com.baidu.mapapi.map.BaiduMap;
 import com.baidu.mapapi.map.BitmapDescriptor;
+import com.baidu.mapapi.map.BitmapDescriptorFactory;
 import com.baidu.mapapi.map.MapStatusUpdate;
 import com.baidu.mapapi.map.MapStatusUpdateFactory;
 import com.baidu.mapapi.map.MapView;
+import com.baidu.mapapi.map.Marker;
+import com.baidu.mapapi.map.MarkerOptions;
 import com.baidu.mapapi.map.MyLocationConfiguration;
-import com.baidu.mapapi.map.MyLocationData;
 import com.baidu.mapapi.map.MyLocationConfiguration.LocationMode;
+import com.baidu.mapapi.map.MyLocationData;
+import com.baidu.mapapi.map.OverlayOptions;
 import com.baidu.mapapi.model.LatLng;
 import com.baidu.mapapi.search.core.SearchResult;
 import com.baidu.mapapi.search.geocode.GeoCodeOption;
@@ -43,24 +51,26 @@ OnGetGeoCoderResultListener{
 	private GeoCoder mSearch = null; // 搜索模块，也可去掉地图模块独立使用
 	private LocationClient mLocClient=null;
 	private LocationMode mCurrentMode;
+	private List<Marker> mMarkerBike;
 	BitmapDescriptor mCurrentMarker= null;
 	private Button locateButton=null;
 	public  MyLocationListenner myListener = new MyLocationListenner();
 	boolean isFirstLoc = true;// 是否首次定位
-	
+	boolean locateflag = false;
 	private String cityname = null;
 	private String cityid = null;
 	private String cityurl = null;
 	private BikeContext _bikecontext = null;
 	private Boolean _existcity = false;
 	private City _city =null;
-
+	BitmapDescriptor bdA ;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
 		SDKInitializer.initialize(getApplicationContext());
-		
+		bdA = BitmapDescriptorFactory.fromResource(R.drawable.ic_launcher);
 		Intent intent = super.getIntent();
 		Bundle bundle = intent.getExtras();
 		cityid = bundle.getString("id");
@@ -71,24 +81,32 @@ OnGetGeoCoderResultListener{
 		locateButton = (Button)this.findViewById(R.id.locate);
 		mBaiduMap = mMapView.getMap();
 		mCurrentMode = LocationMode.NORMAL;
-		mBaiduMap
-		.setMyLocationConfigeration(new MyLocationConfiguration(
+		mBaiduMap.setMyLocationConfigeration(new MyLocationConfiguration(
 				mCurrentMode, true, mCurrentMarker));
 		locateButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
 				// TODO 自动生成的方法存根
-				// 开启定位图层
-				mBaiduMap.setMyLocationEnabled(true);
 				// 定位初始化
 				mLocClient = new LocationClient(getApplicationContext());
 				mLocClient.registerLocationListener(myListener);
 				LocationClientOption option = new LocationClientOption();
-				option.setOpenGps(true);// 打开gps
-				option.setCoorType("bd09ll"); // 设置坐标类型
-				option.setScanSpan(1000);
-				mLocClient.setLocOption(option);
-				mLocClient.start();
+				if (!locateflag) {
+					// 开启定位图层
+					mBaiduMap.setMyLocationEnabled(true);
+					option.setOpenGps(true);// 打开gps
+					option.setCoorType("bd09ll"); // 设置坐标类型
+					option.setScanSpan(1000);
+					mLocClient.setLocOption(option);
+					mLocClient.start();
+					locateflag = true;
+				}
+				else {
+					mBaiduMap.setMyLocationEnabled(false);
+					option.setOpenGps(false);
+					mLocClient.stop();
+					locateflag = false;
+				}
 			}
 		});
 		
@@ -100,7 +118,7 @@ OnGetGeoCoderResultListener{
 		_bikecontext = new BikeContext(datamodulestratege);
 		_existcity = _bikecontext.CheckExist(cityid);
 		if (_existcity) {
-			// ture stands for exits city ever load ,and load derectly from db
+			// ture stands for exits city ever load ,and load directly from db
 			_city.setSlist(_bikecontext.ReadDBData());
 		}
 		else {
@@ -133,13 +151,22 @@ OnGetGeoCoderResultListener{
 						location.getLongitude());
 				MapStatusUpdate u = MapStatusUpdateFactory.newLatLng(ll);
 				mBaiduMap.animateMapStatus(u);
+				mMarkerBike = new ArrayList<Marker>();
+				for(LatLng l:_bikecontext.SearchStation(new LatLng(31.2806200000,120.7373470000), 5))
+				{
+					OverlayOptions ooA = new MarkerOptions().position(l).icon(bdA)
+							.zIndex(9).draggable(true);
+					mBaiduMap.addOverlay(ooA);
+					mMarkerBike.add((Marker) (mBaiduMap.addOverlay(ooA)));
+				}
 			}
 			Log.v("location",locData.latitude+","+locData.longitude);
 			/*
 			 * Need Thinking 每时每刻接收数据即查询？不可取；
 			 * 多线程查询？
+			 * 需优化！
+			 * 31.2825180000,120.7343100000
 			 * */
-			_bikecontext.SearchStation(new LatLng(location.getLatitude(), location.getLongitude()), 5);
 		};
 
 		public void onReceivePoi(BDLocation poiLocation) {
