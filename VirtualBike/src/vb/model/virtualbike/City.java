@@ -8,6 +8,7 @@ import org.json.JSONException;
 
 import android.util.Log;
 
+import vb.context.virtualbike.BikeContext;
 import vb.helpers.virtualbike.HttpRequestHelper;
 import vb.helpers.virtualbike.JsonParserHelper;
 
@@ -18,6 +19,16 @@ public class City {
 	private static City city = null;
 	//这里的write2db的作用主要是对于某些特殊城市，所请求返回的数据的不同来判断是否需要写入数据库的必要。
 	public Boolean dnotwrite2db =null;
+	private BikeContext _bikecontext = null;
+	String cityurl = null;
+	public String getCityurl() {
+		return cityurl;
+	}
+
+	public void setCityurl(String cityurl) {
+		this.cityurl = cityurl;
+	}
+
 	private City() {
 
 	}
@@ -57,7 +68,7 @@ public class City {
 		// pre load data from url: check if exists in db by id
 
 		// new thread to load data from url
-		
+		cityurl = url;
 		new Thread(new Runnable() {
 
 			@Override
@@ -91,6 +102,15 @@ public class City {
 		}).start();
 		// if data contains "availBike" do not save to db
 		// set data
+	}
+
+	public void SetContext(BikeContext context) {
+		// TODO 自动生成的方法存根
+		_bikecontext = context;
+	}
+	public BikeContext GetContext() {
+		// TODO 自动生成的方法存根
+		return _bikecontext;
 	}
 
 }

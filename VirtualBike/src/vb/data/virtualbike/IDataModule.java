@@ -1,11 +1,12 @@
 package vb.data.virtualbike;
 
 import java.io.InputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public interface IDataModule {
+public interface IDataModule{
 	public void WriteData(String config);
 	public void ReadData(String config);
 	public Map<String, List<String>> ReadData(InputStream is);

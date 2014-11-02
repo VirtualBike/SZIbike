@@ -81,6 +81,11 @@
 				<name>昆山</name>
 				<url>http://218.93.33.59:85/map/ksmap/ibikestation.asp</url>
 			</city>
+                        <city>
+				<id>0117</id>
+				<name>扬中</name>
+				<url>http://218.93.33.59:85/map/zjmap/ibikestation.asp</url>
+			</city>
 	</province>
         <province>
 		<name>安徽省</name>
@@ -146,9 +151,39 @@
 				<id>0308</id>
 				<name>龙湾</name>
 				<url>http://218.93.33.59:85/map/wzmap/ibikestation.asp</url>
-			</city> 
-         </province>
-         <province>
+			</city>
+                        <city>
+				<id>0309</id>
+				<name>黄岩</name>
+				<url>http://www.tzhypb.com/hymap/ibikestation.asp</url>
+			</city>
+                        <city>
+				<id>0310</id>
+				<name>温州鹿城</name>
+				<url>http://218.93.33.59:85/map/wzmap/ibikestation.asp</url>
+			</city>
+                        <city>
+				<id>0311</id>
+				<name>温州经济技术开发</name>
+				<url> http://218.93.33.59:85/map/wzmap/ibikestation.asp</url>
+			</city>
+                        <city>
+				<id>0312</id>
+				<name>安吉</name>
+				<url>http://218.93.33.59:85/map/ajmap/ibikestation.asp</url>
+			</city>
+                        <city>
+				<id>0313</id>
+				<name>瑞安</name>
+				<url>http://218.93.33.59:85/map/ruianmap/ibikestation.asp</url>
+			</city>
+                        <city>
+				<id>0314</id>
+				<name>乐清</name>
+				<url>http://www.yqbicycle.com/bike/ibikestation.asp</url>
+			</city>
+           </province>
+           <province>
 		<name>黑龙江省</name>
 			<city>
 				<id>0401</id>
@@ -188,4 +223,144 @@
 					<name>枣庄</name>
 					<url>http://218.93.33.59:85/map/zzmap/ibikestation.asp</url>
 				</city>
+			</city>
+                <city>
+					<id>0403</id>
+					<name>北安</name>
+					<url>http://218.93.33.59:85/map/bamap/ibikestation.asp</url>
+				</city>              
          </province>
+          <province>
+		<name>山东省</name>
+			<city>
+				<id>0501</id>
+				<name>烟台</name>
+				<url>http://www.ytzxc.com/ytmap/ibikestation.asp</url>
+			</city>
+			<city>
+				<id>0502</id>
+				<name>安丘</name>
+				<url>http://218.93.33.59:85/map/wfmap/aqibikestation.asp</url>
+			</city>
+            <city>
+				<id>0503</id>
+				<name>潍坊</name>
+				<url>http://218.93.33.59:85/map/wfmap/ibikestation.asp</url>
+			</city>
+            <city>
+				<id>0504</id>
+				<name>济宁</name>
+				<url>http://map.crsud.cn/jn/map/ibikestation.asp</url>
+			</city>
+            <city>
+				<id>0505</id>
+				<name>枣庄</name>
+				<url>http://218.93.33.59:85/map/zzmap/ibikestation.asp</url>
+			</city>
+            <city>
+				<id>0506</id>
+				<name>临朐</name>
+				<url>http://218.93.33.59:85/map/wfmap/linquibikestation.asp</url>
+			</city>
+            <city>
+				<id>0507</id>
+				<name>昌乐</name>
+				<url>http://218.93.33.59:85/map/wfmap/Changleibikestation.asp</url>
+			</city>
+            <city>
+				<id>0508</id>
+				<name>莒县</name>
+				<url>http://218.93.33.59:85/map/juxianmap/ibikestation.asp</url>
+			</city>
+                        <city>
+				<id>0509</id>
+				<name>滨州</name>
+				<url>http://map.crsud.cn/bz/map/ibikestation.asp</url>
+			</city>
+                        <city>
+				<id>0510</id>
+				<name>平邑</name>
+				<url>http://218.93.33.59:85/map/linshu/ibikestation.asp</url>
+			</city>
+                        <city>
+				<id>0511</id>
+				<name>滕州</name>
+				<url>http://218.93.33.59:85/map/zzmap/ibikestation.asp</url>
+			</city>
+                        <city>
+				<id>0512</id>
+				<name>青州</name>
+				<url>http://218.93.33.59:85/map/qingzhoumap/ibikestation.asp</url>
+			</city>
+                        <city>
+				<id>0513</id>
+				<name>临沭</name>
+				<url>http://218.93.33.59:85/map/linshu/ibikestation.asp</url>
+			</city>
+         </province>
+         <province>
+		<name>河南省</name>
+			<city>
+				<id>0601</id>
+				<name>永城</name>
+				<url>http://218.93.33.59:85/map/ycmap/ibikestation.asp</url>
+			</city>
+			<city>
+				<id>0602</id>
+				<name>许昌</name>
+				<url>http://218.93.33.59:85/map/xcmap/ibikestation.asp</url>
+			</city>
+                         <city>
+				<id>0603</id>
+				<name>驻马店</name>
+				<url>http://218.93.33.59:85/map/zhuamdian/ibikestation.asp</url>
+			</city>              
+         </province>
+         <province>
+		<name>北京市</name>
+			<city>
+				<id>0701</id>
+				<name>北京市大兴区</name>
+				<url>http://www.1km0g.com/api/ibikeJSInterface.asp</url>
+			</city>
+			<city>
+				<id>0702</id>
+				<name>北京市平谷区</name>
+				<url>http://map.crsud.cn/pg/map/ibikestation.asp</url>
+			</city>    
+         </province>
+         <province>
+		<name>广西省</name>
+			<city>
+				<id>0801</id>
+				<name>桂林</name>
+				<url>http://218.93.33.59:85/map/guilinmap/ibikestation.asp</url>
+			</city> 
+         </province>
+         <province>
+		<name>陕西省</name>
+			<city>
+				<id>0901</id>
+				<name>神木</name>
+				<url>http://www.bike912.com/smmap/ibikestation.asp</url>
+			</city>
+			<city>
+				<id>0902</id>
+				<name>靖边</name>
+				<url>http://218.93.33.59:85/map/jingbianmap/ibikestation.asp</url>
+			</city>
+                         <city>
+				<id>0903</id>
+				<name>宁陕</name>
+				<url>http://218.93.33.59:85/map/ningshan/ibikestation.asp</url>
+			</city>              
+         </province>
+          <province>
+		<name>新疆省</name>
+			<city>
+				<id>01001</id>
+				<name>阿克苏</name>
+				<url>http://www.akspub.com/statics/bikemap/station.php</url>
+			</city> 
+         </province>
+		 </xml>

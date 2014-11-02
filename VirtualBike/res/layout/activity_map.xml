@@ -29,7 +29,17 @@
             android:layout_weight="1"
             android:padding="10dip"
             android:text="定位" />
-
+		 <Button
+            android:id="@+id/searchlist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dip"
+            android:layout_marginLeft="2dip"
+            android:layout_marginTop="2dip"
+            android:layout_weight="1"
+            android:padding="10dip"
+            android:text="列表查询" />
+        
     </LinearLayout>
     
       

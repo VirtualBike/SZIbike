@@ -1,6 +1,7 @@
 package vb.context.virtualbike;
 
 import java.io.InputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -14,26 +15,24 @@ import vb.model.virtualbike.Station;
 import android.util.Log;
 
 import com.baidu.mapapi.model.LatLng;
+import com.baidu.mapapi.search.geocode.GeoCoder;
 import com.baidu.mapapi.utils.CoordinateConverter;
 import com.baidu.mapapi.utils.CoordinateConverter.CoordType;
 import com.baidu.mapapi.utils.DistanceUtil;
 
-public class BikeContext {
+public class BikeContext implements Serializable {
 	public List<Station> slist;
 	public Map<String, List<String>> res;
 	private City _city = null;
 	private IDataModule _datamodule = null ;
 	private SortedSet<Station> _sortedstationSet =null;
-
+	public List<Station> gPSLocateStations = null;
 	
-	public BikeContext(IDataModule datamodule){
-		_datamodule = datamodule;
-		_city = City.getInstance(); 
-		slist = new ArrayList<Station>();
-	}
+	
 	public BikeContext(){
 		_city = City.getInstance(); 
 		slist = new ArrayList<Station>();
+		gPSLocateStations = new ArrayList<Station>();
 	}
 	/*
 	 * function for read city xml*/
@@ -80,9 +79,27 @@ public class BikeContext {
 		for (Station station : _sortedstationSet) {
 			Log.v("distense",station.getName()+"-"+station.getId()+"-"+station.getDistence_info().toString());
 		}
+		gPSLocateStations.clear();
 		for (int i = 0; i < searchcounts; i++) {
-			listlocs.add((LatLng) ((Station)_sortedstationSet.toArray()[i]).locobjObject);
+			Station ss= (Station) _sortedstationSet.toArray()[i];
+			listlocs.add((LatLng)(ss.locobjObject));
+			gPSLocateStations.add(ss);
 		}
 		return listlocs;
+	}
+	public void SearchStation(String location) {
+		slist = _city.getSlist();
+		gPSLocateStations.clear();
+		for(Station station : slist)
+		{
+			if (station.getName().contains(location)||station.getAddress().contains(location)) {
+				gPSLocateStations.add(station);
+			}
+		}
+	}
+
+	public void SetDataModuleStratege(IDataModule datamodulestratege) {
+		// TODO 自动生成的方法存根
+		_datamodule = datamodulestratege;
 	}
 }

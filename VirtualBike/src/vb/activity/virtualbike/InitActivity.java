@@ -30,7 +30,7 @@ public class InitActivity extends Activity {
 	City city = null;
 	ExpandableListView expandablelistview = null;
 	Map<String, List<String>> res = new HashMap<String, List<String>>();
-
+	private BikeContext _bikecontext = new BikeContext();
 	private String[] province = new String[] { "   江苏省", "   安徽省" };
 	private String[][] cities = new String[][] {
 			{ "     苏州", "     常州", "     无锡" }, { "     宿州", "     马鞍山" } };
@@ -41,8 +41,8 @@ public class InitActivity extends Activity {
 	public void ReadData() throws IOException {
 		// stub here
 		IDataModule xmlDataModule = new XMLDataModule();
-		BikeContext xmldatamodulestratege = new BikeContext(xmlDataModule);
-		res = xmldatamodulestratege.ReadXMLData(getResources().getAssets().open("cities.xml"));
+		_bikecontext.SetDataModuleStratege(xmlDataModule);
+		res = _bikecontext.ReadXMLData(getResources().getAssets().open("cities.xml"));
 		
 		/*
 		Map<String, List<String>> stub = new HashMap<String, List<String>>();
