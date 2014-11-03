@@ -2,12 +2,14 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical" >
+ 		
  		<LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_weight="2"    
         android:gravity="center"   
         android:orientation="horizontal" >
+		
 	 	<com.baidu.mapapi.map.MapView
 		        android:id="@+id/bmapView"
 		        android:layout_width="fill_parent"
@@ -19,6 +21,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal" >
+	 
         <Button
             android:id="@+id/locate"
             android:layout_width="wrap_content"
@@ -29,6 +32,13 @@
             android:layout_weight="1"
             android:padding="10dip"
             android:text="定位" />
+        <ProgressBar
+	 	    android:id="@+id/progressBar1"
+	 	    android:layout_width="wrap_content"
+	 	    android:layout_height="wrap_content" 
+	 	     android:layout_weight="1"
+	 	     android:visibility="gone"
+	 	    />
 		 <Button
             android:id="@+id/searchlist"
             android:layout_width="wrap_content"

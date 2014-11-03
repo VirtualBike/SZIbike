@@ -6,11 +6,12 @@ import java.util.ArrayList;
 import org.apache.http.client.ClientProtocolException;
 import org.json.JSONException;
 
-import android.util.Log;
-
 import vb.context.virtualbike.BikeContext;
 import vb.helpers.virtualbike.HttpRequestHelper;
 import vb.helpers.virtualbike.JsonParserHelper;
+import android.os.Handler;
+import android.os.Message;
+import android.util.Log;
 
 public class City {
 	private String id;
@@ -64,16 +65,18 @@ public class City {
 		this._slist = slist;
 	}
 
-	public void Initlization(String id, final String url) {
+	public void Initlization(final Handler handler,String id, final String url) {
 		// pre load data from url: check if exists in db by id
 
 		// new thread to load data from url
 		cityurl = url;
+		
 		new Thread(new Runnable() {
 
 			@Override
 			public void run() {
 				// TODO 自动生成的方法存根
+				Message msg = new Message();
 				HttpRequestHelper hr = new HttpRequestHelper(url);
 				try {
 					String dataString =null ;
@@ -87,7 +90,8 @@ public class City {
 					else {
 						_slist = jsonph.parser2list_without_validbike(dataString);
 					}
-					
+					msg.what = 1;//数据传递结束
+					handler.sendMessage(msg);
 				} catch (ClientProtocolException e) {
 					// TODO 自动生成的 catch 块
 					e.printStackTrace();

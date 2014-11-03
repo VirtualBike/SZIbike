@@ -53,7 +53,11 @@ public class SearchlistActivity extends Activity {
 				// TODO 自动生成的方法存根
 				Intent intent = new Intent();
 				Bundle bundle = new Bundle();
-				bundle.putSerializable("SER_KEY", station);
+				bundle.putString("id", station.getId());
+				bundle.putString("address", station.getAddress());
+				bundle.putString("lat", station.getLat());
+				bundle.putString("lon", station.getLon());
+				bundle.putInt("number", arg2);
 				intent.putExtras(bundle);
 				intent.setClass(SearchlistActivity.this,StationDisplayActivity.class);
 				startActivity(intent);

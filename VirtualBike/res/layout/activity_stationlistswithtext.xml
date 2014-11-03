@@ -3,32 +3,33 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
- <LinearLayout
+
+   <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0" >
 
         <TextView
-            android:id="@+id/textViewborrowinfolabel"
+            android:id="@+id/textViewborrowinfo2label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0"
             android:text="可借：" />
 
-        <WebView
-            android:id="@+id/webViewborrowinfo"
+        <TextView
+            android:id="@+id/textviewborrowinfo"
             android:layout_width="match_parent"
             android:layout_height="match_parent" 
             android:layout_weight="3"/>
         <TextView
-            android:id="@+id/textViewreturninfolabel"
+            android:id="@+id/textViewreturninfo2label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="可还：" 
             android:layout_weight="0"/>
 
-        <WebView
-            android:id="@+id/webViewreturninfo"
+        <TextView
+            android:id="@+id/textviewreturninfo"
             android:layout_width="match_parent"
             android:layout_height="match_parent" 
             android:layout_weight="3"/>
@@ -40,21 +41,21 @@
         android:layout_height="wrap_content"
         android:layout_weight="0" >
 
-           <TextView
-            android:id="@+id/textViewaddresslabel"
+          <TextView
+            android:id="@+id/textViewaddress2label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="站点地址：" 
             android:layout_weight="0"/>
 
         <TextView
-            android:id="@+id/textviewaddressinfo"
+            android:id="@+id/textviewaddress2"
             android:layout_width="match_parent"
             android:layout_height="match_parent" 
             android:layout_weight="0"/>
 
     </LinearLayout>
-	<LinearLayout
+    <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_weight="2"    

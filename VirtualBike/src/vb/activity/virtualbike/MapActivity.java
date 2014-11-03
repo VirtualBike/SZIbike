@@ -7,15 +7,18 @@ import vb.context.virtualbike.BikeContext;
 import vb.data.virtualbike.DBDataModule;
 import vb.data.virtualbike.IDataModule;
 import vb.model.virtualbike.City;
-import android.R.bool;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.baidu.location.BDLocation;
@@ -41,7 +44,6 @@ import com.baidu.mapapi.search.geocode.GeoCodeOption;
 import com.baidu.mapapi.search.geocode.GeoCodeResult;
 import com.baidu.mapapi.search.geocode.GeoCoder;
 import com.baidu.mapapi.search.geocode.OnGetGeoCoderResultListener;
-import com.baidu.mapapi.search.geocode.ReverseGeoCodeOption;
 import com.baidu.mapapi.search.geocode.ReverseGeoCodeResult;
 
 public class MapActivity extends Activity implements
@@ -68,7 +70,8 @@ OnGetGeoCoderResultListener{
 	private String LocatingAddress =null;
 	BitmapDescriptor bdA ;
 	List<LatLng> stationsLatLngs = new ArrayList<LatLng>();
-	
+	MyHandler handler ;
+	ProgressBar progressBar;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -85,6 +88,13 @@ OnGetGeoCoderResultListener{
 		mMapView = (MapView) this.findViewById(R.id.bmapView);
 		locateButton = (Button)this.findViewById(R.id.locate);
 		searchlistButton = (Button)this.findViewById(R.id.searchlist);
+		locateButton.setEnabled(false);
+		searchlistButton.setEnabled(false);
+		progressBar = (ProgressBar)this.findViewById(R.id.progressBar1);
+		progressBar.setIndeterminate(false);
+		progressBar.setVisibility(View.VISIBLE);
+		
+		handler =  new MyHandler();
 		mBaiduMap = mMapView.getMap();
 		mCurrentMode = LocationMode.NORMAL;
 		mBaiduMap.setMyLocationConfigeration(new MyLocationConfiguration(
@@ -214,7 +224,7 @@ OnGetGeoCoderResultListener{
 
 	public void Initlization() {
 		//load data from common system by a new thread In City
-		_city.Initlization(cityid, cityurl);
+		_city.Initlization(handler,cityid, cityurl);
 	}
 
 	@Override
@@ -239,4 +249,27 @@ OnGetGeoCoderResultListener{
 		}
 		mBaiduMap.clear();
 	}
+	
+	 class MyHandler extends Handler {
+         public MyHandler() {
+         }
+  
+         public MyHandler(Looper L) {
+             super(L);
+         }
+         // 子类必须重写此方法,接受数据
+         @Override
+         public void handleMessage(Message msg) {
+             // TODO Auto-generated method stub
+             Log.d("MyHandler", "handleMessage......");
+             if (msg.what==1) {
+				progressBar.setVisibility(View.GONE);
+				locateButton.setEnabled(true);
+				searchlistButton.setEnabled(true);
+			}
+             super.handleMessage(msg);
+             // 此处可以更新UI
+         }
+     }
+	
 }
