@@ -39,7 +39,10 @@ public class SearchlistActivity extends Activity {
 		setContentView(R.layout.activity_stationlists);
 		tView= (EditText)findViewById(R.id.text_search_edit);
 		searchButton= (Button)findViewById(R.id.searchbutton);
-		searchListView= (ListView)findViewById(R.id.liststationView);
+		/*((PullToRefreshLayout) findViewById(R.id.refresh_view))
+		.setOnRefreshListener(new MyListener());
+		listView = (ListView) findViewById(R.id.content_view);*/
+		searchListView= (ListView)findViewById(R.id.listview);
 		tView.setText(LocatingAddress);
 		Setdata();
 		adapter = new SimpleAdapter(this,datasetList, R.layout.listitem, new String[]{"name","address","distense"}, new int[]{R.id.name,R.id.address,R.id.distense});

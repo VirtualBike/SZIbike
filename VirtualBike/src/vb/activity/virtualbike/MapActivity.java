@@ -7,6 +7,7 @@ import vb.context.virtualbike.BikeContext;
 import vb.data.virtualbike.DBDataModule;
 import vb.data.virtualbike.IDataModule;
 import vb.model.virtualbike.City;
+import android.R.bool;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -64,6 +65,7 @@ OnGetGeoCoderResultListener{
 	private String cityname = null;
 	private String cityid = null;
 	private String cityurl = null;
+	private String stationurl = null;
 	private BikeContext _bikecontext = null;
 	private Boolean _existcity = false;
 	private City _city =null;
@@ -72,6 +74,8 @@ OnGetGeoCoderResultListener{
 	List<LatLng> stationsLatLngs = new ArrayList<LatLng>();
 	MyHandler handler ;
 	ProgressBar progressBar;
+	LatLng lastgpslocation = null;
+	LatLng newgpslocation = null;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -84,6 +88,7 @@ OnGetGeoCoderResultListener{
 		cityid = bundle.getString("id");
 		cityurl = bundle.getString("url");
 		cityname= bundle.getString("name");
+		stationurl = bundle.getString("stationurl");
 		setContentView(R.layout.activity_map);
 		mMapView = (MapView) this.findViewById(R.id.bmapView);
 		locateButton = (Button)this.findViewById(R.id.locate);
@@ -148,6 +153,7 @@ OnGetGeoCoderResultListener{
 		_city = City.getInstance();
 		_city.SetContext(_bikecontext);
 		_existcity = _bikecontext.CheckExist(cityid);
+		_city.setStationurl(stationurl);
 		if (_existcity) {
 			// ture stands for exits city ever load ,and load directly from db
 			_city.setSlist(_bikecontext.ReadDBData());
@@ -185,14 +191,30 @@ OnGetGeoCoderResultListener{
 						location.getLongitude());
 				MapStatusUpdate u = MapStatusUpdateFactory.newLatLng(ll);
 				mBaiduMap.animateMapStatus(u);
-				stationsLatLngs = _bikecontext.SearchStation(new LatLng(31.2806200000,120.7373470000), 5);
+				lastgpslocation = ll;
+				newgpslocation = ll;
+				stationsLatLngs = _bikecontext.SearchStation(new LatLng(location.getLatitude(),
+						location.getLongitude()), 5);
+				for(LatLng stationl:stationsLatLngs)
+				{
+					OverlayOptions ooA = new MarkerOptions().position(stationl).icon(bdA)
+							.zIndex(9).draggable(true);
+					mBaiduMap.addOverlay(ooA);
+				}
 			}
-			for(LatLng stationl:stationsLatLngs)
-			{
-				OverlayOptions ooA = new MarkerOptions().position(stationl).icon(bdA)
-						.zIndex(9).draggable(true);
-				mBaiduMap.addOverlay(ooA);
-				mMarkerBike.add((Marker) (mBaiduMap.addOverlay(ooA)));
+			boolean Renderflag = _bikecontext.CompareGpsLocation(lastgpslocation,new LatLng(location.getLatitude(),
+					location.getLongitude()));
+			if (Renderflag) {
+				mBaiduMap.clear();
+				stationsLatLngs = _bikecontext.SearchStation(new LatLng(location.getLatitude(),
+						location.getLongitude()), 5);
+				for(LatLng stationl:stationsLatLngs)
+				{
+					OverlayOptions ooA = new MarkerOptions().position(stationl).icon(bdA)
+							.zIndex(9).draggable(true);
+					mBaiduMap.addOverlay(ooA);
+					
+				}
 			}
 			Log.v("location",locData.latitude+","+locData.longitude);
 			/*

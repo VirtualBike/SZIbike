@@ -31,13 +31,15 @@
             android:layout_marginTop="2dip"
             android:layout_weight="1"
             android:padding="10dip"
-            android:text="定位" />
+            android:text="定位"
+            android:background="@drawable/buttonstyle" />
         <ProgressBar
 	 	    android:id="@+id/progressBar1"
 	 	    android:layout_width="wrap_content"
 	 	    android:layout_height="wrap_content" 
 	 	     android:layout_weight="1"
 	 	     android:visibility="gone"
+	 	    android:color="#FFEC7600" 
 	 	    />
 		 <Button
             android:id="@+id/searchlist"
@@ -48,7 +50,8 @@
             android:layout_marginTop="2dip"
             android:layout_weight="1"
             android:padding="10dip"
-            android:text="列表查询" />
+            android:text="列表查询" 
+             android:background="@drawable/buttonstyle"/>
         
     </LinearLayout>
     

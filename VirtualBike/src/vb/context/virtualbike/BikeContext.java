@@ -102,4 +102,21 @@ public class BikeContext implements Serializable {
 		// TODO 自动生成的方法存根
 		_datamodule = datamodulestratege;
 	}
+	public boolean CompareGpsLocation(LatLng lastgpslocation, LatLng latLng) {
+		// TODO 自动生成的方法存根
+		
+		double distense = DistanceUtil.getDistance(lastgpslocation, latLng);
+		lastgpslocation = latLng;
+		if (distense <= 10) {
+			//两次定位数据的距离在10米之内则不必再次刷新地图以及周边站点信息
+			return false;
+		}
+		else {
+			return true;
+		}
+	}
+	public void Refresh() {
+		// TODO 自动生成的方法存根
+		
+	}
 }

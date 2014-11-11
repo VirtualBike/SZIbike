@@ -4,6 +4,16 @@
     android:layout_height="fill_parent"
     android:orientation="vertical" >
 
+    <TextView
+        android:id="@+id/textViewwelcomelabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="请选择您想要查看的城市" 
+        
+         android:color="#FFEC7600" 
+        
+        />
+
     <ExpandableListView
         android:id="@+id/province"
         android:layout_width="match_parent"

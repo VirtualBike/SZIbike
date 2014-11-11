@@ -14,7 +14,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="vb.activity.virtualbike.InitActivity"
+            android:name="vb.activity.virtualbike.WelcomeActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,7 +22,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-         <activity
+       <activity
+            android:name="vb.activity.virtualbike.InitActivity">
+         </activity>
+        <activity
             android:name="vb.activity.virtualbike.MapActivity">
          </activity>
           <activity
@@ -31,6 +34,7 @@
           <activity
             android:name="vb.activity.virtualbike.StationDisplayActivity">
          </activity>
+          
           <service
             android:name="com.baidu.location.f"
             android:enabled="true"

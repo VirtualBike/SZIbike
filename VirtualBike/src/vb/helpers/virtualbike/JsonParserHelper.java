@@ -6,9 +6,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.R.integer;
-
-
 import vb.model.virtualbike.Station;
 
 public class JsonParserHelper {

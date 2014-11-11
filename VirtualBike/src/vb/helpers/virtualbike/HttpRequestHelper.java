@@ -43,4 +43,14 @@ public class HttpRequestHelper {
 		}
 		return str;
 	}
+	
+	public InputStream GetInputStream() throws IllegalStateException, IOException {
+		HttpResponse response = client.execute(requestasp);
+		InputStream is = null;
+		if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
+			HttpEntity responseEntity = response.getEntity();
+			is = responseEntity.getContent();
+		}
+		return is;
+	}
 }

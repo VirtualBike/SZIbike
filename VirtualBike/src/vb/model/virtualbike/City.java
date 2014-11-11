@@ -21,13 +21,14 @@ public class City {
 	//这里的write2db的作用主要是对于某些特殊城市，所请求返回的数据的不同来判断是否需要写入数据库的必要。
 	public Boolean dnotwrite2db =null;
 	private BikeContext _bikecontext = null;
-	String cityurl = null;
+	String _cityurl = null;
+	String _stationurl =null;
 	public String getCityurl() {
-		return cityurl;
+		return _cityurl;
 	}
 
 	public void setCityurl(String cityurl) {
-		this.cityurl = cityurl;
+		this._cityurl = cityurl;
 	}
 
 	private City() {
@@ -69,10 +70,9 @@ public class City {
 		// pre load data from url: check if exists in db by id
 
 		// new thread to load data from url
-		cityurl = url;
+		_cityurl = url;
 		
 		new Thread(new Runnable() {
-
 			@Override
 			public void run() {
 				// TODO 自动生成的方法存根
@@ -115,6 +115,15 @@ public class City {
 	public BikeContext GetContext() {
 		// TODO 自动生成的方法存根
 		return _bikecontext;
+	}
+
+	public void setStationurl(String url) {
+		// TODO 自动生成的方法存根
+		_stationurl = url;
+	}
+	public String getStationurl() {
+		// TODO 自动生成的方法存根
+		return _stationurl;
 	}
 
 }

@@ -62,7 +62,7 @@ public class XMLDataModule implements IDataModule {
 					while (parser.nextTag() != XmlPullParser.END_TAG&&!"province".equals(parser.getName())) {
 						parser.require(XmlPullParser.START_TAG, null, "city");
 						String cityinfoString="";
-						for (int i = 0; i < 3; i++) {
+						for (int i = 0; i < 4; i++) {
 							parser.nextTag();
 							cityinfoString = cityinfoString + parser.getName() + "=" + parser.nextText();
 							Log.v("tag",cityinfoString);

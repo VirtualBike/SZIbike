@@ -28,6 +28,7 @@ import android.widget.TextView;
 
 public class InitActivity extends Activity {
 	City city = null;
+	TextView tView;
 	ExpandableListView expandablelistview = null;
 	Map<String, List<String>> res = new HashMap<String, List<String>>();
 	private BikeContext _bikecontext = new BikeContext();
@@ -57,6 +58,8 @@ public class InitActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		city = City.getInstance();
 		setContentView(R.layout.activity_init);
+		tView = (TextView)findViewById(R.id.textViewwelcomelabel);
+		tView.setTextSize(25);
 		try {
 			ReadData();
 		} catch (IOException e) {
@@ -165,15 +168,17 @@ public class InitActivity extends Activity {
 					int arg2, int arg3, long arg4) {
 				// TODO 自动生成的方法存根
 				// stub here for city id
-				String id = ((List<String>) res.values().toArray()[arg2]).get(arg3).split("id=")[1].split("name=")[0];
-				String url = ((List<String>) res.values().toArray()[arg2]).get(arg3).split("url=")[1];
+				String id = ((List<String>) res.values().toArray()[arg2]).get(arg3).split("id=")[1].split("name=")[0].trim();
 				String name = ((List<String>) res.values().toArray()[arg2]).get(arg3).split("name=")[1].split("url=")[0].trim();
- 				//city.Initlization(id,id);		
+				String url = ((List<String>) res.values().toArray()[arg2]).get(arg3).split("url=")[1].split("stationlink=")[0].trim();
+				String stationurl = ((List<String>) res.values().toArray()[arg2]).get(arg3).split("stationlink=")[1];
+				//city.Initlization(id,id);		
 				Intent intent = new Intent();
 				Bundle bundle = new Bundle();
 				bundle.putString("id", id);
 				bundle.putString("url", url);
 				bundle.putString("name", name);
+				bundle.putString("stationurl",stationurl);
 				intent.putExtras(bundle);
 				intent.setClass(InitActivity.this, MapActivity.class);
 				startActivity(intent);
