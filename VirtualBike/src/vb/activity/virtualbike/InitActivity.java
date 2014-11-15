@@ -69,7 +69,7 @@ public class InitActivity extends Activity {
 		final ExpandableListAdapter adapter = new BaseExpandableListAdapter() {
 			public TextView gettextview() {
 				AbsListView.LayoutParams lp = new AbsListView.LayoutParams(
-						ViewGroup.LayoutParams.MATCH_PARENT, 64);
+						ViewGroup.LayoutParams.MATCH_PARENT, 84);
 				TextView textView = new TextView(InitActivity.this);
 				textView.setLayoutParams(lp);
 				textView.setGravity(Gravity.CENTER_VERTICAL);
@@ -83,7 +83,7 @@ public class InitActivity extends Activity {
 			public Object getChild(int arg0, int arg1) {
 				// TODO 自动生成的方法存根
 
-				return ((List<String>) res.values().toArray()[arg0]).get(arg1).split("name=")[1].split("url=")[0];
+				return "     "+((List<String>) res.values().toArray()[arg0]).get(arg1).split("name=")[1].split("url=")[0];
 				// return cities[arg0][arg1];
 			}
 
@@ -115,7 +115,7 @@ public class InitActivity extends Activity {
 			@Override
 			public Object getGroup(int arg0) {
 				// TODO 自动生成的方法存根
-				return ((String) res.keySet().toArray()[arg0]);
+				return "   "+((String) res.keySet().toArray()[arg0]);
 				// return province[arg0];
 			}
 
